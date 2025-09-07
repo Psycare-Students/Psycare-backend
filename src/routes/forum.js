@@ -14,6 +14,15 @@ router.post("/", authMiddleware, async (req, res) => {
   res.status(201).json(newPost);
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const posts = await Forum.find().sort({ createdAt: -1 });
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 router.post("/:id/reply", authMiddleware, async (req, res) => {
   const { id } = req.params;
   const { message } = req.body;
