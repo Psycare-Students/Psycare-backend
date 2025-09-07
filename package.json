@@ -1,0 +1,21 @@
+{
+  "name": "psycare-backend",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "description": "1. Install dependencies:    ```bash    npm install    ``` 2. Copy `.env.example` to `.env` and fill in your environment variables. 3. Start the server:    ```bash    npm start    ```",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
