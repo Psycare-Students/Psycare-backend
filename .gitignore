@@ -1,6 +1,11 @@
 # Node modules
 node_modules/
 
+# Environment files
+.env
+# Node modules
+node_modules/
+
 
 # Logs
 logs/

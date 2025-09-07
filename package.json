@@ -7,8 +7,13 @@
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "dotenv": "^16.0.0",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.0"
