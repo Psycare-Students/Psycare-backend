@@ -1,7 +1,7 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
-import forumRoutes from "./routes/forum.js";
+import forumRoutes from "./src/routes/forum.js";
 
 dotenv.config();
 const app = express();
