@@ -12,7 +12,7 @@ passport.use(new GoogleStrategy({
   clientSecret: GOOGLE_CLIENT_SECRET,
   callbackURL: '/api/auth/google/callback',
 }, async (accessToken, refreshToken, profile, done) => {
-  let user = await User.findByEmail(profile.emails[0].value);
+  let user = await User.findOne({ email: profile.emails[0].value });
   if (!user) {
     user = await User.create({ email: profile.emails[0].value, password: '' });
   }

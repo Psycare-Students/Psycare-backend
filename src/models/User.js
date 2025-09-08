@@ -1,25 +1,20 @@
+import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-const users = [];
+const userSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
 
-export default class User {
-  constructor({ email, password }) {
-    this.email = email;
-    this.password = password;
-  }
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
 
-  static async create({ email, password }) {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword });
-    users.push(user);
-    return user;
-  }
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
-  static async findByEmail(email) {
-    return users.find((u) => u.email === email);
-  }
-
-  async comparePassword(password) {
-    return bcrypt.compare(password, this.password);
-  }
-}
+const User = mongoose.model('User', userSchema);
+export default User;

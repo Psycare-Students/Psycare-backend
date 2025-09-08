@@ -7,8 +7,8 @@ const authMiddleware = (req, res, next) => {
     let token;
 
     // 1. Check for JWT token in Authorization header
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-      token = req.headers.authorization.split(" ")[1];
+    if (req.headers.authorization) {
+      token = req.headers.authorization;
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decoded; // attach user info to request

@@ -1,22 +1,30 @@
-
-
+import cors from "cors";
+import bodyParser from "body-parser";
+import testRoutes from "./routes/TestRoutes.js";
 import express from 'express';
 import dotenv from 'dotenv';
-import forumRoutes from "./routes/forum.js";
-
+import authRoutes from './routes/authRoutes.js';
 import passport from './auth.js';
 import session from 'express-session';
-dotenv.config();
+import forumRoutes from "./routes/forum.js";
 
+dotenv.config();
 const app = express();
-app.use(session({ secret: process.env.JWT_SECRET || 'secret', resave: false, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(express.json());
 
 // Import routes
 // const userRoutes = require('./routes/userRoutes');
 // app.use('/api/users', userRoutes);
+app.use(cors());
+app.use(bodyParser.json());
+
+app.use('/api/auth', authRoutes);
+
+app.use("/api/tests", testRoutes);
+
+app.use("/api/forum", forumRoutes);
+
 
 app.get('/', (req, res) => {
   res.send('API is running...');
