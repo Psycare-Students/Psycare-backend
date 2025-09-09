@@ -10,6 +10,8 @@ router.post("/", authMiddleware, async (req, res) => {
   if (req.user.role !== "student") return res.status(403).json({ error: "Only students can book" });
 
   const { psychologistId, appointmentTime, duration } = req.body;
+  console.log("Logged-in user:", req.user);
+
 
   try {
     const startTime = new Date(appointmentTime);
@@ -26,7 +28,7 @@ router.post("/", authMiddleware, async (req, res) => {
 
     // Prevent double booking for student
     const studentConflict = await Appointment.findOne({
-      studentId: req.user._id,
+      studentId: req.user.id,
       status: { $ne: "cancelled" },
       appointmentTime: { $lt: endTime },
       $expr: { $gt: [{ $add: ["$appointmentTime", { $multiply: ["$duration", 60000] }] }, startTime] }
@@ -34,7 +36,7 @@ router.post("/", authMiddleware, async (req, res) => {
     if (studentConflict) return res.status(400).json({ error: "You already have an appointment in this slot" });
 
     const appointment = await Appointment.create({
-      studentId: req.user._id,
+      studentId: req.user.id,
       psychologistId,
       appointmentTime: startTime,
       duration: duration || 30,
@@ -58,9 +60,9 @@ router.get("/", authMiddleware, async (req, res) => {
     const query = {};
 
     if (req.user.role === "student") {
-      query.studentId = req.user._id;
+      query.studentId = req.user.id;
     } else if (req.user.role === "psychologist") {
-      query.psychologistId = req.user._id;
+      query.psychologistId = req.user.id;
     }
 
     if (status) query.status = status;
@@ -102,7 +104,7 @@ router.patch("/:id", authMiddleware, async (req, res) => {
 
   try {
     const updated = await Appointment.findOneAndUpdate(
-      { _id: req.params.id, psychologistId: req.user._id },
+      { _id: req.params.id, psychologistId: req.user.id },
       { status },
       { new: true }
     );
@@ -123,7 +125,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
 
   try {
     const appointment = await Appointment.findOneAndUpdate(
-      { _id: req.params.id, studentId: req.user._id },
+      { _id: req.params.id, studentId: req.user.id },
       { status: "cancelled" },
       { new: true }
     );
