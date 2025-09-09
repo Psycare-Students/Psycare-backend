@@ -1,0 +1,368 @@
+[
+  {
+    "test_name": "Onboarding Quiz",
+    "description": "Basic wellness check at the start of the app",
+    "questions": [
+      {
+        "question_text": "How often have you felt anxious in the past week?",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "Do you have trouble sleeping regularly?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "How often do you feel motivated to do daily activities?",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "How often do you feel lonely or isolated?",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "How frequently do you experience fatigue or body pain?",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      }
+    ]
+  },
+  {
+    "test_name": "Anxiety Test",
+    "description": "Measures severity of anxiety (GAD-7 inspired)",
+    "questions": [
+      {
+        "question_text": "Feeling nervous, anxious, or on edge.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Not being able to stop or control worrying.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Worrying too much about different things.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Trouble relaxing.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Becoming easily annoyed or irritable.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      }
+    ]
+  },
+  {
+    "test_name": "Depression Test",
+    "description": "Screens for depressive symptoms (PHQ-9 inspired)",
+    "questions": [
+      {
+        "question_text": "Little interest or pleasure in doing things.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Feeling down, depressed, or hopeless.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Trouble sleeping or sleeping too much.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Feeling tired or having little energy.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      },
+      {
+        "question_text": "Feeling bad about yourself or that you are a failure.",
+        "answer_type": "scale_0_3",
+        "options": ["0", "1", "2", "3"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+      }
+    ]
+  },
+  {
+    "test_name": "Stress Test",
+    "description": "Measures perceived stress levels",
+    "questions": [
+      {
+        "question_text": "How often have you felt that you were unable to control important things in your life?",
+        "answer_type": "scale_0_4",
+        "options": ["0", "1", "2", "3", "4"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+      },
+      {
+        "question_text": "How often have you felt nervous and stressed?",
+        "answer_type": "scale_0_4",
+        "options": ["0", "1", "2", "3", "4"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+      },
+      {
+        "question_text": "How often have you found that you could not cope with all the things you had to do?",
+        "answer_type": "scale_0_4",
+        "options": ["0", "1", "2", "3", "4"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+      },
+      {
+        "question_text": "How often have you felt difficulties piling up so high that you could not overcome them?",
+        "answer_type": "scale_0_4",
+        "options": ["0", "1", "2", "3", "4"],
+        "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+      }
+    ]
+  },
+  {
+    "test_name": "Sleep Quality Test",
+    "description": "Detects insomnia or poor sleep habits",
+    "questions": [
+      {
+        "question_text": "Do you have trouble falling asleep within 30 minutes?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you wake up frequently at night?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you feel tired after waking up in the morning?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you use your phone or laptop just before bed?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      }
+    ]
+  },
+  {
+    "test_name": "Self-Esteem Test",
+    "description": "Checks confidence and self-worth",
+    "questions": [
+      {
+        "question_text": "I feel that I am a person of worth.",
+        "answer_type": "scale_1_4",
+        "options": ["1", "2", "3", "4"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+      },
+      {
+        "question_text": "I feel I have a number of good qualities.",
+        "answer_type": "scale_1_4",
+        "options": ["1", "2", "3", "4"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+      },
+      {
+        "question_text": "I take a positive attitude toward myself.",
+        "answer_type": "scale_1_4",
+        "options": ["1", "2", "3", "4"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+      },
+      {
+        "question_text": "I feel I do not have much to be proud of.",
+        "answer_type": "scale_1_4",
+        "options": ["1", "2", "3", "4"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+      }
+    ]
+  },
+  {
+    "test_name": "Resilience & Coping Skills Test",
+    "description": "Identifies how users handle stress and bounce back",
+    "questions": [
+      {
+        "question_text": "I am able to adapt when changes occur.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I can deal with whatever comes my way.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I usually manage one way or another.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I can stay focused under pressure.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      }
+    ]
+  },
+  {
+    "test_name": "Social Connectedness Test",
+    "description": "Evaluates loneliness and social support",
+    "questions": [
+      {
+        "question_text": "I feel close to people in my life.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I feel disconnected from others.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I have people I can rely on when I need help.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I often feel isolated even when around people.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      }
+    ]
+  },
+  {
+    "test_name": "Burnout Test",
+    "description": "Measures emotional exhaustion in work/study",
+    "questions": [
+      {
+        "question_text": "I feel emotionally drained from my work/studies.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I feel used up at the end of the day.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I feel I’m not making a meaningful contribution.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I feel less enthusiastic about my work/studies than before.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      }
+    ]
+  },
+  {
+    "test_name": "Lifestyle & Habits Test",
+    "description": "General lifestyle wellness habits",
+    "questions": [
+      {
+        "question_text": "Do you exercise at least 3 times a week?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you consume fast food more than 3 times a week?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you smoke or consume alcohol?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you take regular breaks during work/study?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      },
+      {
+        "question_text": "Do you practice mindfulness or meditation?",
+        "answer_type": "yes_no",
+        "options": ["Yes", "No"],
+        "score_mapping": { "Yes": 1, "No": 0 }
+      }
+    ]
+  },
+  {
+    "test_name": "Relationship & Social Wellness Test",
+    "description": "Assesses emotional well-being and satisfaction in personal relationships",
+    "questions": [
+      {
+        "question_text": "I feel supported by my friends or partner.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I experience conflicts in my relationships that affect my mood.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 5, "2": 4, "3": 3, "4": 2, "5": 1 }
+      },
+      {
+        "question_text": "I feel lonely even when I am with friends or in a relationship.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 5, "2": 4, "3": 3, "4": 2, "5": 1 }
+      },
+      {
+        "question_text": "I am comfortable communicating my feelings to people I care about.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I can balance my personal relationships with academic or work responsibilities.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      },
+      {
+        "question_text": "I feel comfortable seeking help or advice when relationship issues arise.",
+        "answer_type": "scale_1_5",
+        "options": ["1", "2", "3", "4", "5"],
+        "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+      }
+    ]
+  }
+]
