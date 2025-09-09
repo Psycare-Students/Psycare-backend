@@ -7,6 +7,7 @@ import authRoutes from './routes/authRoutes.js';
 import passport from './auth.js';
 import session from 'express-session';
 import forumRoutes from "./routes/forum.js";
+import appointment from './routes/appointmentroutes.js'
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
+
+app.use('/api/appointment', appointment);
 
 app.use("/api/tests", testRoutes);
 

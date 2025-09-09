@@ -5,7 +5,7 @@ import UserReport from "../models/UserReport.js";
 // Get all tests
 export const getAllTests = async (req, res) => {
   try {
-    const tests = await Test.find({}, "test_name description");
+    const tests = await Test.find({test_name: { $ne: "Onboarding Quiz" } }, "test_name description");
     res.json(tests);
   } catch (err) {
     res.status(500).json({ error: err.message });
