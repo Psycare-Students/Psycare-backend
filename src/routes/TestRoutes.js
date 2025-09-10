@@ -6,7 +6,7 @@ import {
   getUserReport
 } from "../controllers/TestControllers.js";
 
-import authMiddleware from "../middlewares/authMiddleware.js";
+import authMiddleware from "../middlewares/authmiddleware.js";
 
 const router = express.Router();
 

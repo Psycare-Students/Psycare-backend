@@ -7,6 +7,7 @@ import authRoutes from './routes/authRoutes.js';
 import passport from './auth.js';
 import session from 'express-session';
 import forumRoutes from "./routes/forum.js";
+import wellnessRoutes from './routes/wellnessRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,7 @@ app.use("/api/tests", testRoutes);
 
 app.use("/api/forum", forumRoutes);
 
+app.use('/api/wellness', wellnessRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running...');
