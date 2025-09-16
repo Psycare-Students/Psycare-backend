@@ -3,7 +3,8 @@ import {
   getAllTests,
   getTestQuestions,
   submitTest,
-  getUserReport
+  getUserReport,
+  getAllUserReports
 } from "../controllers/TestControllers.js";
 
 import authMiddleware from "../middlewares/authMiddleware.js";
@@ -16,5 +17,6 @@ router.get("/", getAllTests);
 router.get("/:testId/questions", getTestQuestions);
 router.post("/:testId/submit", submitTest);
 router.get("/user/:userId/report", getUserReport);
+router.get("/user/:userId/allreport", getAllUserReports);
 
 export default router;
