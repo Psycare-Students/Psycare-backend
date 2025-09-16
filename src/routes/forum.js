@@ -1,20 +1,35 @@
-
 import express from "express";
 import Forum from "../models/Forum.js";
 import PrivateMessage from "../models/PrivateMessage.js";
-import authMiddleware from "../middlewares/authmiddleware.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
+import postMiddleware from "../middlewares/postMiddleware.js";
 
 const router = express.Router();
 
-// Protected routes
-router.post("/", authMiddleware, async (req, res) => {
-  const { title, content } = req.body;
-  const user = req.user.name || req.user.email; 
-  const newPost = new Forum({ title, content, user });
-  await newPost.save();
-  res.status(201).json(newPost);
+// Helper to get a string identifier for user
+const getUserIdentifier = (user) => user.name || user.email || user.id;
+
+// -----------------------
+// Create a new post
+// -----------------------
+router.post("/", authMiddleware, postMiddleware, async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const user = getUserIdentifier(req.user);
+    if (!user) return res.status(401).json({ message: "User info missing" });
+
+    const newPost = new Forum({ title, content, user });
+    await newPost.save();
+    res.status(201).json(newPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
+// -----------------------
+// Get all posts
+// -----------------------
 router.get("/", async (req, res) => {
   try {
     const posts = await Forum.find().sort({ createdAt: -1 });
@@ -24,36 +39,63 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/:id/reply", authMiddleware, async (req, res) => {
-  const { id } = req.params;
-  const { message } = req.body;
-  const user = req.user.name || req.user.email;
+// -----------------------
+// Reply to a post
+// -----------------------
+router.post("/:id/reply", authMiddleware, postMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { message } = req.body;
+    const user = getUserIdentifier(req.user);
 
-  const forumPost = await Forum.findById(id);
-  if (!forumPost) return res.status(404).json({ message: "Post not found" });
+    const forumPost = await Forum.findById(id);
+    if (!forumPost) return res.status(404).json({ message: "Post not found" });
 
-  forumPost.replies.push({ user, message });
-  await forumPost.save();
-  res.status(201).json(forumPost);
+    forumPost.replies.push({ user, message });
+    await forumPost.save();
+    res.status(201).json(forumPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
+// -----------------------
+// Like a post
+// -----------------------
 router.post("/:id/like", authMiddleware, async (req, res) => {
-  const { id } = req.params;
-  const forumPost = await Forum.findById(id);
-  if (!forumPost) return res.status(404).json({ message: "Post not found" });
+  try {
+    const { id } = req.params;
 
-  forumPost.likes += 1;
-  await forumPost.save();
-  res.json({ likes: forumPost.likes });
+    const forumPost = await Forum.findById(id);
+    if (!forumPost) return res.status(404).json({ message: "Post not found" });
+
+    forumPost.likes += 1;
+    await forumPost.save();
+    res.json({ likes: forumPost.likes });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.post("/message", authMiddleware, async (req, res) => {
-  const { message, to } = req.body;
-  const from = req.user.name || req.user.email;
+// -----------------------
+// Send a private message
+// -----------------------
+router.post("/message", authMiddleware, postMiddleware, async (req, res) => {
+  try {
+    const { message, to } = req.body;
+    const from = getUserIdentifier(req.user);
 
-  const newMessage = new PrivateMessage({ from, to, message });
-  await newMessage.save();
-  res.status(201).json(newMessage);
+    if (!from) return res.status(401).json({ message: "User info missing" });
+
+    const newMessage = new PrivateMessage({ from, to, message });
+    await newMessage.save();
+    res.status(201).json(newMessage);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 export default router;
