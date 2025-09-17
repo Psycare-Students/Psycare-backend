@@ -46,3 +46,4 @@ const authMiddleware = (req, res, next) => {
 };
 
 export default authMiddleware;
+export const authenticateJWT = authMiddleware;
