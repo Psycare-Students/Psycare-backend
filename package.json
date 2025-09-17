@@ -19,23 +19,27 @@
   "author": "Ayush Rawat",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@huggingface/inference": "^4.8.0",
+    "axios": "^1.12.2",
     "bad-words": "^3.0.4",
     "bcryptjs": "^2.4.3",
+    "chrono-node": "^2.8.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.21.2",
+    "express-session": "^1.18.2",
     "express-validator": "^7.0.1",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.0",
     "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
     "openai": "^4.0.0",
-    "sanitize-html": "^2.11.0",
-    "express-session": "^1.18.2",
     "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0"
-
+    "passport-google-oauth20": "^2.0.0",
+    "sanitize-html": "^2.11.0"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

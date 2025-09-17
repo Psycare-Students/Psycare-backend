@@ -1,0 +1,512 @@
+[
+    {
+      "test_name": "Onboarding Quiz",
+      "description": "Comprehensive wellness check to understand user's mental, emotional, and physical well-being",
+      "questions": [
+        {
+          "question_text": "How often have you felt anxious in the past week?",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "How often have you felt sad or down in the past week?",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "Do you have trouble sleeping regularly?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        },
+        {
+          "question_text": "How often do you feel motivated to do daily activities?",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "How often do you feel lonely or isolated?",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "How frequently do you experience fatigue or body pain?",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "How often do you engage in physical exercise each week?",
+          "answer_type": "scale_1_5",
+          "options": ["Never", "1-2 times", "3-4 times", "5-6 times", "Daily"],
+          "score_mapping": {
+            "Never": 1,
+            "1-2 times": 2,
+            "3-4 times": 3,
+            "5-6 times": 4,
+            "Daily": 5
+          }
+        },
+        {
+          "question_text": "How balanced is your diet?",
+          "answer_type": "scale_1_5",
+          "options": [
+            "Very unhealthy",
+            "Somewhat unhealthy",
+            "Neutral",
+            "Somewhat healthy",
+            "Very healthy"
+          ],
+          "score_mapping": {
+            "Very unhealthy": 1,
+            "Somewhat unhealthy": 2,
+            "Neutral": 3,
+            "Somewhat healthy": 4,
+            "Very healthy": 5
+          }
+        },
+        {
+          "question_text": "Do you have someone you can talk to when stressed or upset?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        },
+        {
+          "question_text": "How often do you feel overwhelmed by responsibilities?",
+          "answer_type": "scale_1_5",
+          "options": ["Never", "Rarely", "Sometimes", "Often", "Always"],
+          "score_mapping": {
+            "Never": 1,
+            "Rarely": 2,
+            "Sometimes": 3,
+            "Often": 4,
+            "Always": 5
+          }
+        },
+        {
+          "question_text": "Do you practice any coping strategies for stress (meditation, journaling, exercise)?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        },
+        {
+          "question_text": "How satisfied are you with your current social life?",
+          "answer_type": "scale_1_5",
+          "options": [
+            "Very dissatisfied",
+            "Dissatisfied",
+            "Neutral",
+            "Satisfied",
+            "Very satisfied"
+          ],
+          "score_mapping": {
+            "Very dissatisfied": 1,
+            "Dissatisfied": 2,
+            "Neutral": 3,
+            "Satisfied": 4,
+            "Very satisfied": 5
+          }
+        }
+      ]
+    },
+    {
+      "test_name": "Perceived Stress Scale (PSS-10)",
+      "description": "Measures perceived stress over the past month.",
+      "questions": [
+        {
+          "question_text": "In the last month, how often have you been upset because of something that happened unexpectedly?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "In the last month, how often have you felt that you were unable to control the important things in your life?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "In the last month, how often have you felt nervous and stressed?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "In the last month, how often have you felt confident about your ability to handle personal problems?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 4, "1": 3, "2": 2, "3": 1, "4": 0 }
+        },
+        {
+          "question_text": "In the last month, how often have you felt that things were going your way?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 4, "1": 3, "2": 2, "3": 1, "4": 0 }
+        },
+        {
+          "question_text": "In the last month, how often have you found that you could not cope with all the things that you had to do?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "In the last month, how often have you been able to control irritations in your life?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 4, "1": 3, "2": 2, "3": 1, "4": 0 }
+        },
+        {
+          "question_text": "In the last month, how often have you felt that you were on top of things?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 4, "1": 3, "2": 2, "3": 1, "4": 0 }
+        },
+        {
+          "question_text": "In the last month, how often have you been angered because of things outside your control?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "In the last month, how often have you felt difficulties were piling up so high that you could not overcome them?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        }
+      ]
+    },
+    {
+      "test_name": "Insomnia Severity Index (ISI)",
+      "description": "Assesses severity of insomnia over the past 2 weeks.",
+      "questions": [
+        {
+          "question_text": "Difficulty falling asleep",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "Difficulty staying asleep",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "Problem waking up too early",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "How satisfied are you with your current sleep pattern?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "How much do sleep problems interfere with your daily functioning?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "How noticeable to others are your sleep problems?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "How distressed are you about your sleep problems?",
+          "answer_type": "scale_0_4",
+          "options": ["0", "1", "2", "3", "4"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3, "4": 4 }
+        }
+      ]
+    },
+    {
+      "test_name": "Generalized Anxiety Disorder (GAD-7)",
+      "description": "Measures severity of anxiety over the past 2 weeks.",
+      "questions": [
+        {
+          "question_text": "Feeling nervous, anxious, or on edge",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Not being able to stop or control worrying",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Worrying too much about different things",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Trouble relaxing",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Being so restless that it is hard to sit still",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Becoming easily annoyed or irritable",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Feeling afraid as if something awful might happen",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        }
+      ]
+    },
+    {
+      "test_name": "Patient Health Questionnaire (PHQ-9)",
+      "description": "Screens for depression severity over the past 2 weeks.",
+      "questions": [
+        {
+          "question_text": "Little interest or pleasure in doing things",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Feeling down, depressed, or hopeless",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Trouble falling or staying asleep, or sleeping too much",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Feeling tired or having little energy",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Poor appetite or overeating",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Feeling bad about yourself or that you are a failure",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Trouble concentrating on things",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Moving or speaking so slowly that others notice, or being fidgety",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        },
+        {
+          "question_text": "Thoughts that you would be better off dead or hurting yourself",
+          "answer_type": "scale_0_3",
+          "options": ["0", "1", "2", "3"],
+          "score_mapping": { "0": 0, "1": 1, "2": 2, "3": 3 }
+        }
+      ]
+    },
+    {
+      "test_name": "Rosenberg Self-Esteem Scale",
+      "description": "Checks confidence and self-worth.",
+      "questions": [
+        {
+          "question_text": "I feel that I am a person of worth, at least on an equal plane with others.",
+          "answer_type": "scale_1_4",
+          "options": ["1", "2", "3", "4"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "I feel that I have a number of good qualities.",
+          "answer_type": "scale_1_4",
+          "options": ["1", "2", "3", "4"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "All in all, I am inclined to feel that I am a failure.",
+          "answer_type": "scale_1_4",
+          "options": ["1", "2", "3", "4"],
+          "score_mapping": { "1": 4, "2": 3, "3": 2, "4": 1 }
+        },
+        {
+          "question_text": "I am able to do things as well as most other people.",
+          "answer_type": "scale_1_4",
+          "options": ["1", "2", "3", "4"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+        },
+        {
+          "question_text": "I feel I do not have much to be proud of.",
+          "answer_type": "scale_1_4",
+          "options": ["1", "2", "3", "4"],
+          "score_mapping": { "1": 4, "2": 3, "3": 2, "4": 1 }
+        },
+        {
+          "question_text": "I take a positive attitude toward myself.",
+          "answer_type": "scale_1_4",
+          "options": ["1", "2", "3", "4"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4 }
+        }
+      ]
+    },
+    {
+      "test_name": "Brief Resilience Scale (BRS)",
+      "description": "Identifies how users handle stress and bounce back.",
+      "questions": [
+        {
+          "question_text": "I tend to bounce back quickly after hard times.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "I have a hard time making it through stressful events.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 5, "2": 4, "3": 3, "4": 2, "5": 1 }
+        },
+        {
+          "question_text": "It does not take me long to recover from a stressful event.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "It is hard for me to snap back when something bad happens.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 5, "2": 4, "3": 3, "4": 2, "5": 1 }
+        }
+      ]
+    },
+    {
+      "test_name": "Burnout Assessment",
+      "description": "Measures emotional exhaustion and cynicism in work/study.",
+      "questions": [
+        {
+          "question_text": "I feel emotionally drained from my work/studies.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "I feel used up at the end of the day.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "I feel I’m not making a meaningful contribution.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "I have become more cynical about my work/studies.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        }
+      ]
+    },
+    {
+      "test_name": "Lifestyle & Habits",
+      "description": "Assesses general wellness habits.",
+      "questions": [
+        {
+          "question_text": "Do you get at least 30 minutes of moderate exercise on most days?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        },
+        {
+          "question_text": "Is your diet generally balanced and nutritious?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        },
+        {
+          "question_text": "Do you regularly practice mindfulness or meditation?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        },
+        {
+          "question_text": "Do you smoke or consume alcohol more than moderately?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 0, "No": 1 }
+        },
+        {
+          "question_text": "Do you take regular breaks during work/study?",
+          "answer_type": "yes_no",
+          "options": ["Yes", "No"],
+          "score_mapping": { "Yes": 1, "No": 0 }
+        }
+      ]
+    },
+    {
+      "test_name": "Social & Relationship Wellness",
+      "description": "Assesses satisfaction and well-being in personal relationships.",
+      "questions": [
+        {
+          "question_text": "I feel supported by my friends, family, or partner.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "I experience frequent conflicts in my important relationships.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 5, "2": 4, "3": 3, "4": 2, "5": 1 }
+        },
+        {
+          "question_text": "I often feel lonely or isolated.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 5, "2": 4, "3": 3, "4": 2, "5": 1 }
+        },
+        {
+          "question_text": "I can comfortably communicate my feelings to people I care about.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        },
+        {
+          "question_text": "I am satisfied with my ability to balance personal relationships with other responsibilities.",
+          "answer_type": "scale_1_5",
+          "options": ["1", "2", "3", "4", "5"],
+          "score_mapping": { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 }
+        }
+      ]
+    }
+  ]

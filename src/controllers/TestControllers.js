@@ -5,7 +5,7 @@ import UserReport from "../models/UserReport.js";
 // Get all tests
 export const getAllTests = async (req, res) => {
   try {
-    const tests = await Test.find({}, "test_name description");
+    const tests = await Test.find({test_name: { $ne: "Onboarding Quiz" } }, "test_name description");
     res.json(tests);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -74,6 +74,40 @@ export const getUserReport = async (req, res) => {
     const report = await UserReport.findOne({ user_id: req.params.userId });
     if (!report) return res.json({ message: "No reports yet" });
     res.json(report);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+export const getAllUserReports = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    
+    // Pagination parameters (default: page 1, 10 reports per page)
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    // Fetch reports with pagination, sorted by creation date (newest first)
+    const reports = await UserReport.find({ user_id: userId })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    if (!reports || reports.length === 0) {
+      return res.json({ message: "No reports yet" });
+    }
+
+    // Total count for client-side pagination
+    const totalReports = await UserReport.countDocuments({ user_id: userId });
+    const totalPages = Math.ceil(totalReports / limit);
+
+    res.json({
+      page,
+      totalPages,
+      totalReports,
+      reports,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
