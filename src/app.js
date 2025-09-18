@@ -10,6 +10,7 @@ import forumRoutes from "./routes/forum.js";
 import appointment from './routes/appointmentroutes.js'
 import chatRoutes from './routes/chatbotRoutes.js'
 import wellnessRoutes from './routes/wellnessRoutes.js'
+import userRoutes from './routes/user.js'
 
 dotenv.config();
 const app = express();
@@ -19,14 +20,21 @@ app.use(express.json());
 // Import routes
 // const userRoutes = require('./routes/userRoutes');
 // app.use('/api/users', userRoutes);
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5000",  // frontend origin
+  methods: ["GET", "POST","PATCH","DELETE"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
 
 app.use('/api', chatRoutes);
 
-app.use('/api/appointment', appointment);
+app.use('/api/users', userRoutes);
+
+
+app.use('/api/appointments', appointment);
 
 app.use('/api/wellness', wellnessRoutes);
 

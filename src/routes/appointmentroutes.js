@@ -56,26 +56,36 @@ router.post("/", authMiddleware, async (req, res) => {
 // ✅ 3. Get appointments with filters & pagination
 router.get("/", authMiddleware, async (req, res) => {
   try {
+    console.log("🔍 req.user from token:", req.user); // 👈 log payload
+
     const { status, from, to, page = 1, limit = 10 } = req.query;
     const query = {};
 
-    if (req.user.role === "student") {
+    if (req.user?.role?.toLowerCase() === "student") {
       query.studentId = req.user.id;
-    } else if (req.user.role === "psychologist") {
+    } else if (req.user?.role?.toLowerCase() === "psychologist") {
       query.psychologistId = req.user.id;
+    } else {
+      return res.status(403).json({ error: "Access denied. Invalid role.", user: req.user });
     }
 
+    // rest of your code...
+
+
+    // ✅ Add optional filters
     if (status) query.status = status;
+
     if (from || to) {
       query.appointmentTime = {};
       if (from) query.appointmentTime.$gte = new Date(from);
       if (to) query.appointmentTime.$lte = new Date(to);
     }
 
+    // ✅ Fetch with pagination + sorting
     const appointments = await Appointment.find(query)
       .populate("studentId", "name email")
       .populate("psychologistId", "name email")
-      .skip((page - 1) * limit)
+      .skip((page - 1) * parseInt(limit))
       .limit(parseInt(limit))
       .sort({ appointmentTime: 1 });
 
@@ -85,12 +95,15 @@ router.get("/", authMiddleware, async (req, res) => {
       total,
       page: parseInt(page),
       limit: parseInt(limit),
-      data: appointments
+      data: appointments,
     });
   } catch (err) {
+    console.error("Appointments fetch error:", err);
     res.status(500).json({ error: err.message });
   }
 });
+
+
 
 
 // ✅ 4. Psychologist updates appointment status

@@ -1,24 +1,27 @@
 // src/middlewares/authMiddleware.js
 import jwt from "jsonwebtoken";
 
-// Middleware to protect routes and normalize user info
 const authMiddleware = (req, res, next) => {
   try {
     let user;
 
     // 1. Check for JWT token in Authorization header
     if (req.headers.authorization) {
-      // Remove "Bearer " if it exists, works even if user doesn't include it
+      // Remove "Bearer " if it exists
       const token = req.headers.authorization.replace(/^Bearer\s+/i, "").trim();
 
       // Verify JWT
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(
+        token,
+        process.env.JWT_SECRET || "35391d39f508992e4432b3b8930003eb822978c0db2a1def436f283d72b621c4"
+      );
 
-      // Normalize user object
+      // ✅ Include role as well
       user = {
         id: decoded.id,
         name: decoded.name || null,
         email: decoded.email || null,
+        role: decoded.role || null,
       };
 
       req.user = user;
@@ -31,6 +34,7 @@ const authMiddleware = (req, res, next) => {
         id: req.user.id || req.user._id,
         name: req.user.name || null,
         email: req.user.email || null,
+        role: req.user.role || null, // ✅ normalize role from Google auth if available
       };
 
       req.user = user;
@@ -46,3 +50,4 @@ const authMiddleware = (req, res, next) => {
 };
 
 export default authMiddleware;
+export const authenticateJWT = authMiddleware;

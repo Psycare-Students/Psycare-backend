@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import dns from "dns";
 import * as chrono from "chrono-node";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import translate from "google-translate-api-x";  // ✅ Translation API
 
 import Appointment from "../models/Appointments.js";
 import Conversation from "../models/Conversation.js";
@@ -107,9 +108,21 @@ async function detectBookingIntent(message) {
   };
 }
 
+// ---------------- Translation Helper ----------------
+async function translateTextIfNeeded(text, lang) {
+  if (!lang || lang === "en") return text; // default English
+  try {
+    const res = await translate(text, { to: lang });
+    return res.text;
+  } catch (err) {
+    console.error("Translation failed:", err);
+    return text; // fallback
+  }
+}
+
 // ---------------- Chat Endpoint ----------------
 router.post("/chat", authMiddleware, async (req, res) => {
-  const { message } = req.body;
+  const { message, lang } = req.body;
   const userId = req.user?.id || req.user?._id;
 
   if (!message) return res.status(400).json({ error: "Message is required" });
@@ -118,11 +131,11 @@ router.post("/chat", authMiddleware, async (req, res) => {
     // Step 1: Booking
     const booking = await detectBookingIntent(message);
     if (booking && booking.therapist) {
+      let reply;
       if (!booking.time) {
-        return res.json({
-          bookingRequiredTime: true,
-          message: `I recognized your request to book with ${booking.therapist.name}. Please provide the appointment time (e.g., "Sep 17 3pm").`,
-        });
+        reply = `I recognized your request to book with ${booking.therapist.name}. Please provide the appointment time (e.g., "Sep 17 3pm").`;
+        reply = await translateTextIfNeeded(reply, lang);
+        return res.json({ bookingRequiredTime: true, message: reply });
       }
 
       const existing = await Appointment.findOne({
@@ -131,10 +144,9 @@ router.post("/chat", authMiddleware, async (req, res) => {
       });
 
       if (existing) {
-        return res.json({
-          bookingSuccess: false,
-          message: `❌ ${booking.therapist.name} is already booked at ${booking.time}. Please choose another time.`,
-        });
+        reply = `❌ ${booking.therapist.name} is already booked at ${booking.time}. Please choose another time.`;
+        reply = await translateTextIfNeeded(reply, lang);
+        return res.json({ bookingSuccess: false, message: reply });
       }
 
       const appt = new Appointment({
@@ -144,11 +156,9 @@ router.post("/chat", authMiddleware, async (req, res) => {
       });
       await appt.save();
 
-      return res.json({
-        bookingSuccess: true,
-        message: `✅ Appointment confirmed with ${booking.therapist.name} at ${booking.time}.`,
-        appointment: appt,
-      });
+      reply = `✅ Appointment confirmed with ${booking.therapist.name} at ${booking.time}.`;
+      reply = await translateTextIfNeeded(reply, lang);
+      return res.json({ bookingSuccess: true, message: reply, appointment: appt });
     }
 
     // Step 2: Suicide detection
@@ -168,10 +178,13 @@ router.post("/chat", authMiddleware, async (req, res) => {
       await escalationConvo.save();
 
       const therapists = await User.find({ role: "psychologist" }).select("_id name email").lean();
+
+      let emergencyTranslated = await translateTextIfNeeded(EMERGENCY_REPLY, lang);
+
       return res.json({
         escalate: true,
-        emergencyMessage: EMERGENCY_REPLY,
-        hotlines: HOTLINES,
+        emergencyMessage: emergencyTranslated,
+        hotlines: HOTLINES, // You can also translate names if you want
         therapists: therapists.map((t) => ({ id: t._id, name: t.name, email: t.email })),
       });
     }
@@ -190,7 +203,10 @@ router.post("/chat", authMiddleware, async (req, res) => {
     });
 
     const result = await chat.sendMessage(message);
-    const reply = result.response.text();
+    let reply = result.response.text();
+
+    // Translate reply if needed
+    reply = await translateTextIfNeeded(reply, lang);
 
     const convo = new Conversation({ user_id: userId, message, response: reply });
     await convo.save();

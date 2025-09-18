@@ -42,7 +42,7 @@ router.get("/", async (req, res) => {
 // -----------------------
 // Reply to a post
 // -----------------------
-router.post("/:id/reply", authMiddleware, postMiddleware, async (req, res) => {
+router.post("/:id/reply", authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
     const { message } = req.body;
